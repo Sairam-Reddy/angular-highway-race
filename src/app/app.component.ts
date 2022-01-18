@@ -89,7 +89,8 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(
       45,
-      window.innerWidth / window.innerHeight,
+      this.element.nativeElement.offsetWidth /
+        this.element.nativeElement.offsetHeight,
       0.1,
       2000
     );
@@ -97,7 +98,10 @@ export class AppComponent implements AfterViewInit, OnDestroy {
       logarithmicDepthBuffer: true,
     });
     this.renderer.setClearColor(new THREE.Color(this.skyColor));
-    this.renderer.setSize(window.innerWidth, window.innerHeight);
+    this.renderer.setSize(
+      this.element.nativeElement.offsetWidth,
+      this.element.nativeElement.offsetHeight
+    );
     this.renderer.shadowMap.enabled = true;
 
     // II. Lighting
