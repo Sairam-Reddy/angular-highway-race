@@ -21,7 +21,7 @@ export class AppComponent implements AfterViewInit {
   private pointLight;
   private touch = { hold: false, x: 0 };
 
-  public difSelectActive = false;
+  public difSelectActive = undefined;
   public scoreCounterActive = false;
   public replayBtnActive = false;
 

@@ -3,7 +3,13 @@
 </header>
 <div
   class="difficulty-select"
-  [ngClass]="difSelectActive ? 'menu-active' : 'menu-inactive'"
+  [ngClass]="
+    difSelectActive !== undefined
+      ? difSelectActive
+        ? 'menu-active'
+        : 'menu-inactive'
+      : ''
+  "
 >
   <h1>Select Difficulty</h1>
   <button
