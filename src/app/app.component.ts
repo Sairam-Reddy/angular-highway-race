@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy } from '@angular/core';
 import * as THREE from 'three';
 import { Game } from './models/game.model';
 import { RoadChunk } from './models/road-chunk.model';
@@ -36,6 +36,8 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   private downEvent;
   private moveEvent;
   private upEvent;
+
+  public constructor(private element: ElementRef) {}
 
   public ngAfterViewInit(): void {
     this.difSelect = document.querySelector('.difficulty-select');
