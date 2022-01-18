@@ -1,4 +1,6 @@
-<header [class.score-active]="scoreCounterActive">0</header>
+<header *ngIf="game" [class.score-active]="scoreCounterActive">
+  {{ game.score }}
+</header>
 <div class="difficulty-select">
   <h1>Select Difficulty</h1>
   <button type="button" data-difficulty="0" disabled>Easy</button>

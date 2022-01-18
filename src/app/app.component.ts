@@ -28,7 +28,7 @@ export class AppComponent implements AfterViewInit {
   public scoreCounterActive = false;
   public replayBtnActive = false;
 
-  private game = null;
+  public game = null;
   private skyColor = 0x69c6d0;
   private pointLightZ = -60;
   private cameraY = 45;
@@ -298,7 +298,7 @@ export class AppComponent implements AfterViewInit {
         },
         this.scene
       );
-      this.header.innerHTML = this.game.score;
+      // this.header.innerHTML = this.game.score;
       this.toggleScoreCounter();
       this.showTutorial();
     }
@@ -342,7 +342,7 @@ export class AppComponent implements AfterViewInit {
           // score points for passing without using shoulder
           if (Math.abs(vehicleCtrld.x) < this.game.noScoreXZone) {
             ++this.game.score;
-            this.header.innerHTML = this.game.score;
+            // this.header.innerHTML = this.game.score;
           }
         }
 
