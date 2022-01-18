@@ -1,3 +1,5 @@
+import * as THREE from 'three';
+
 export class Spark {
   public center;
   public isHorz;

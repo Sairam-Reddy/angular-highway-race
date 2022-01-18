@@ -1,3 +1,5 @@
+import * as THREE from 'three';
+
 export class RoadChunk {
   public chunkSize;
   public surfaceGeo;

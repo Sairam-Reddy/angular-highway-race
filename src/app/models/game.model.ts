@@ -1,3 +1,5 @@
+import { Vehicle } from './vehicle.model';
+
 export class Game {
   public difficulty;
   public tutorial;

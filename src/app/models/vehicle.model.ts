@@ -1,3 +1,7 @@
+import { Car } from './car.model';
+import { TractorTrailer } from './tractor-trailer.model';
+import { Truck } from './truck.model';
+
 export class Vehicle {
   public color;
   public x;
@@ -19,7 +23,7 @@ export class Vehicle {
   public crashed;
   public deceleration;
 
-  constructor(args) {
+  constructor(args, scene) {
     this.color = args.color || this.randomInt(0x171717, 0xcccccc);
     this.x = args.x || 0;
     this.z = args.z || 0;
@@ -52,19 +56,25 @@ export class Vehicle {
         this.width = 5;
         this.height = 5;
         this.depth = 10;
-        this.model = new Truck(this.color, this.x, this.z, this.name);
+        this.model = new Truck(this.color, this.x, this.z, this.name, scene);
         break;
       case 2:
         this.width = 5;
         this.height = 8;
         this.depth = 18;
-        this.model = new TractorTrailer(this.color, this.x, this.z, this.name);
+        this.model = new TractorTrailer(
+          this.color,
+          this.x,
+          this.z,
+          this.name,
+          scene
+        );
         break;
       default:
         this.width = 5;
         this.height = 4;
         this.depth = 10;
-        this.model = new Car(this.color, this.x, this.z, this.name);
+        this.model = new Car(this.color, this.x, this.z, this.name, scene);
         break;
     }
   }

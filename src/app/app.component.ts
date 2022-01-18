@@ -1,4 +1,9 @@
 import { AfterViewInit, Component } from '@angular/core';
+import * as THREE from 'three';
+import { Game } from './models/game.model';
+import { RoadChunk } from './models/road-chunk.model';
+import { Spark } from './models/spark.model';
+import { Vehicle } from './models/vehicle.model';
 
 @Component({
   selector: 'my-app',
@@ -90,7 +95,7 @@ export class AppComponent implements AfterViewInit {
     this.renderer = new THREE.WebGLRenderer({
       logarithmicDepthBuffer: true,
     });
-    this.renderer.setClearColor(new THREE.Color(skyColor));
+    this.renderer.setClearColor(new THREE.Color(this.skyColor));
     this.renderer.setSize(window.innerWidth, window.innerHeight);
     this.renderer.shadowMap.enabled = true;
 
@@ -109,20 +114,20 @@ export class AppComponent implements AfterViewInit {
     // C. Point
     this.pointLight = new THREE.PointLight(0xffffff, 0.5);
     this.pointLight.name = 'Point Light';
-    this.pointLight.position.set(0, 60, pointLightZ);
+    this.pointLight.position.set(0, 60, this.pointLightZ);
     this.pointLight.castShadow = true;
     this.pointLight.shadow.mapSize = new THREE.Vector2(1024, 1024);
-    this.scene.add(pointLight);
+    this.scene.add(this.pointLight);
 
     // III. Scenery
     // A. Road
     for (let r = 1; r > -this.renderDistance; --r) {
-      this.roadChunks.push(new RoadChunk(r));
+      this.roadChunks.push(new RoadChunk(r, this.scene));
     }
 
     // B. Grass
     var firstChunkSize = this.roadChunks[0].chunkSize,
-      grassDepth = firstChunkSize * (renderDistance + 1),
+      grassDepth = firstChunkSize * (this.renderDistance + 1),
       grassGeo = new THREE.PlaneBufferGeometry(400, grassDepth),
       grassMat = new THREE.MeshLambertMaterial({
         color: 0xbbe868,
@@ -195,7 +200,8 @@ export class AppComponent implements AfterViewInit {
             sx,
             a.height / 2,
             sz,
-            A_front - B_back < 1
+            A_front - B_back < 1,
+            this.scene
           );
         }
       }

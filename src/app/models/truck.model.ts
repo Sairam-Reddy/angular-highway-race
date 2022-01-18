@@ -1,3 +1,5 @@
+import * as THREE from 'three';
+
 export class Truck {
   public mass;
   public mesh;
