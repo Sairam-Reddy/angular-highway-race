@@ -6,10 +6,34 @@
   [ngClass]="difSelectActive ? 'menu-active' : 'menu-inactive'"
 >
   <h1>Select Difficulty</h1>
-  <button type="button" (click)="onClickDifBtn(0)" disabled>Easy</button>
-  <button type="button" (click)="onClickDifBtn(1)" disabled>Medium</button>
-  <button type="button" (click)="onClickDifBtn(2)" disabled>Hard</button>
-  <button type="button" (click)="onClickDifBtn(3)" disabled>Brutal</button>
+  <button
+    type="button"
+    (click)="onClickDifBtn(0)"
+    [class.disabled]="isDiffBtnDisabled"
+  >
+    Easy
+  </button>
+  <button
+    type="button"
+    (click)="onClickDifBtn(1)"
+    [class.disabled]="isDiffBtnDisabled"
+  >
+    Medium
+  </button>
+  <button
+    type="button"
+    (click)="onClickDifBtn(2)"
+    [class.disabled]="isDiffBtnDisabled"
+  >
+    Hard
+  </button>
+  <button
+    type="button"
+    (click)="onClickDifBtn(3)"
+    [class.disabled]="isDiffBtnDisabled"
+  >
+    Brutal
+  </button>
 </div>
 <div class="tutorial">
   <p><strong>Steer:</strong></p>
@@ -18,7 +42,7 @@
     ><br />or<br />Drag left/right
   </p>
 </div>
-<button type="button" class="replay" disabled>
+<button type="button" class="replay" [class.disabled]="isReplayBtnDisabled">
   <svg
     class="btn-icon"
     xmlns="http://www.w3.org/2000/svg"

@@ -28,6 +28,9 @@ export class AppComponent implements AfterViewInit {
   public scoreCounterActive = false;
   public replayBtnActive = false;
 
+  public isDiffBtnDisabled = true;
+  public isReplayBtnDisabled = true;
+
   public game = null;
   private skyColor = 0x69c6d0;
   private pointLightZ = -60;
@@ -37,9 +40,9 @@ export class AppComponent implements AfterViewInit {
   private roadChunks = [];
 
   public ngAfterViewInit(): void {
-    this.header = document.querySelector('header');
-    this.difSelect = document.querySelector('.difficulty-select');
-    this.difButtons = this.difSelect.querySelectorAll('button');
+    // this.header = document.querySelector('header');
+    // this.difSelect = document.querySelector('.difficulty-select');
+    // this.difButtons = this.difSelect.querySelectorAll('button');
     this.tutorialBox = document.querySelector('.tutorial');
     this.replayButton = document.querySelector('.replay');
 
@@ -222,9 +225,10 @@ export class AppComponent implements AfterViewInit {
   }
 
   private toggleDifBtnStates() {
-    for (let b of this.difButtons) {
-      b.disabled = !b.disabled;
-    }
+    // for (let b of this.difButtons) {
+    //   b.disabled = !b.disabled;
+    // }
+    this.isDiffBtnDisabled = !this.isDiffBtnDisabled;
   }
 
   private toggleDifMenu() {
@@ -240,7 +244,7 @@ export class AppComponent implements AfterViewInit {
       setTimeout(this.toggleDifBtnStates.bind(this), 1500);
     } else {
       // this.difSelect.classList.remove(activeClass);
-      // void this.difSelect.offsetWidth;
+      void this.difSelect.offsetWidth;
       // this.difSelect.classList.add(inactiveClass);
       this.toggleDifBtnStates();
     }
@@ -260,7 +264,7 @@ export class AppComponent implements AfterViewInit {
 
   private toggleReplayBtn() {
     this.replayBtnActive = !this.replayBtnActive;
-    this.replayButton.disabled = !this.replayBtnActive;
+    this.isReplayBtnDisabled = !this.replayBtnActive;
 
     let activeClass = 'replay-active';
 
