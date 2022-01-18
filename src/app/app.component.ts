@@ -413,9 +413,14 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   }
 
   private adjustWindow() {
-    this.camera.aspect = window.innerWidth / window.innerHeight;
+    this.camera.aspect =
+      this.element.nativeElement.offsetWidth /
+      this.element.nativeElement.offsetHeight;
     this.camera.updateProjectionMatrix();
-    this.renderer.setSize(window.innerWidth, window.innerHeight);
+    this.renderer.setSize(
+      this.element.nativeElement.offsetWidth,
+      this.element.nativeElement.offsetHeight
+    );
   }
 
   private steerVehicle(e) {
