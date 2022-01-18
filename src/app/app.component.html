@@ -43,6 +43,7 @@
   type="button"
   class="replay"
   (click)="onClickReplayBtn()"
+  [class.replay-active]="replayBtnActive"
   [class.disabled]="isReplayBtnDisabled"
 >
   <svg

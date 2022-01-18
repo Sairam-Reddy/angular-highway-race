@@ -13,7 +13,6 @@ import { Vehicle } from './models/vehicle.model';
 export class AppComponent implements AfterViewInit {
   private difSelect;
   private tutorialBox;
-  private replayButton;
 
   private scene;
   private camera;
@@ -40,7 +39,6 @@ export class AppComponent implements AfterViewInit {
   public ngAfterViewInit(): void {
     this.difSelect = document.querySelector('.difficulty-select');
     this.tutorialBox = document.querySelector('.tutorial');
-    this.replayButton = document.querySelector('.replay');
 
     this.init();
     this.update();
@@ -234,14 +232,6 @@ export class AppComponent implements AfterViewInit {
   private toggleReplayBtn() {
     this.replayBtnActive = !this.replayBtnActive;
     this.isReplayBtnDisabled = !this.replayBtnActive;
-
-    let activeClass = 'replay-active';
-
-    if (this.replayBtnActive) {
-      this.replayButton.classList.add(activeClass);
-    } else {
-      this.replayButton.classList.remove(activeClass);
-    }
   }
 
   private showTutorial() {
