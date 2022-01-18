@@ -1,16 +1,7 @@
 <header *ngIf="game" [class.score-active]="scoreCounterActive">
   {{ game.score }}
 </header>
-<div
-  class="difficulty-select"
-  [ngClass]="
-    difSelectActive !== undefined
-      ? difSelectActive
-        ? 'menu-active'
-        : 'menu-inactive'
-      : ''
-  "
->
+<div class="difficulty-select">
   <h1>Select Difficulty</h1>
   <button
     type="button"
@@ -48,7 +39,12 @@
     ><br />or<br />Drag left/right
   </p>
 </div>
-<button type="button" class="replay" [class.disabled]="isReplayBtnDisabled">
+<button
+  type="button"
+  class="replay"
+  (click)="onClickReplayBtn()"
+  [class.disabled]="isReplayBtnDisabled"
+>
   <svg
     class="btn-icon"
     xmlns="http://www.w3.org/2000/svg"

@@ -11,6 +11,7 @@ import { Vehicle } from './models/vehicle.model';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements AfterViewInit {
+  private difSelect;
   private tutorialBox;
   private replayButton;
 
@@ -21,7 +22,7 @@ export class AppComponent implements AfterViewInit {
   private pointLight;
   private touch = { hold: false, x: 0 };
 
-  public difSelectActive = undefined;
+  public difSelectActive = false;
   public scoreCounterActive = false;
   public replayBtnActive = false;
 
@@ -37,6 +38,7 @@ export class AppComponent implements AfterViewInit {
   private roadChunks = [];
 
   public ngAfterViewInit(): void {
+    this.difSelect = document.querySelector('.difficulty-select');
     this.tutorialBox = document.querySelector('.tutorial');
     this.replayButton = document.querySelector('.replay');
 
@@ -58,17 +60,6 @@ export class AppComponent implements AfterViewInit {
     document.addEventListener(downEvent, this.getTouchHold.bind(this));
     document.addEventListener(moveEvent, this.steerVehicle.bind(this));
     document.addEventListener(upEvent, this.straightenVehicle.bind(this));
-
-    // replay button
-    this.replayButton.addEventListener(
-      'click',
-      (() => {
-        this.game.preparingNew = true;
-        this.toggleScoreCounter();
-        this.toggleReplayBtn();
-        setTimeout(this.toggleDifMenu.bind(this), 250);
-      }).bind(this)
-    );
   }
 
   public onClickDifBtn(difficulty): void {
@@ -76,6 +67,13 @@ export class AppComponent implements AfterViewInit {
     setTimeout(() => {
       this.startGame(difficulty);
     }, 1600);
+  }
+
+  public onClickReplayBtn(): void {
+    this.game.preparingNew = true;
+    this.toggleScoreCounter();
+    this.toggleReplayBtn();
+    setTimeout(this.toggleDifMenu.bind(this), 250);
   }
 
   private init() {
@@ -213,32 +211,24 @@ export class AppComponent implements AfterViewInit {
   private toggleDifMenu() {
     this.difSelectActive = !this.difSelectActive;
 
-    // let activeClass = 'menu-active',
-    //   inactiveClass = 'menu-inactive';
+    let activeClass = 'menu-active',
+      inactiveClass = 'menu-inactive';
 
     if (this.difSelectActive) {
-      // this.difSelect.classList.remove(inactiveClass);
-      // void this.difSelect.offsetWidth;
-      // this.difSelect.classList.add(activeClass);
+      this.difSelect.classList.remove(inactiveClass);
+      void this.difSelect.offsetWidth;
+      this.difSelect.classList.add(activeClass);
       setTimeout(this.toggleDifBtnStates.bind(this), 1500);
     } else {
-      // this.difSelect.classList.remove(activeClass);
-      // void this.difSelect.offsetWidth;
-      // this.difSelect.classList.add(inactiveClass);
+      this.difSelect.classList.remove(activeClass);
+      void this.difSelect.offsetWidth;
+      this.difSelect.classList.add(inactiveClass);
       this.toggleDifBtnStates();
     }
   }
 
   private toggleScoreCounter() {
     this.scoreCounterActive = !this.scoreCounterActive;
-
-    // let activeClass = 'score-active';
-
-    // if (this.scoreCounterActive) {
-    //   this.header.classList.add(activeClass);
-    // } else {
-    //   this.header.classList.remove(activeClass);
-    // }
   }
 
   private toggleReplayBtn() {
