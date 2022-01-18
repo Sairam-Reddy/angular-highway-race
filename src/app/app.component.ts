@@ -220,7 +220,9 @@ export class AppComponent implements AfterViewInit {
   }
 
   private toggleDifBtnStates() {
-    for (let b of this.difButtons) b.disabled = !b.disabled;
+    for (let b of this.difButtons) {
+      b.disabled = !b.disabled;
+    }
   }
 
   private toggleDifMenu() {
