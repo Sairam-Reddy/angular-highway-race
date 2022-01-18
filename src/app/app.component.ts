@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy } from '@angular/core';
 import * as THREE from 'three';
 import { Game } from './models/game.model';
 import { RoadChunk } from './models/road-chunk.model';
@@ -10,7 +10,7 @@ import { Vehicle } from './models/vehicle.model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements AfterViewInit, OnDestroy {
   private difSelect;
 
   private scene;
