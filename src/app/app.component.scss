@@ -1,21 +1,18 @@
-* {
+:host {
+  overflow: hidden;
+  color: #fff;
+  font: 1em Muli, 'Helvetica Neue', Helvetica, sans-serif;
+  line-height: 1.5;
   border: 0;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-:root {
-  font-size: calc(16px + (20 - 16) * (100vw - 320px) / (1024 - 320));
-}
-body,
+
 button {
   color: #fff;
   font: 1em Muli, 'Helvetica Neue', Helvetica, sans-serif;
   line-height: 1.5;
-}
-
-body {
-  overflow: hidden;
 }
 
 button,
