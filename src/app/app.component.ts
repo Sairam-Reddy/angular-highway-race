@@ -157,7 +157,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     this.camera.lookAt(this.scene.position);
 
     // V. Rendering
-    document.body.appendChild(this.renderer.domElement);
+    this.element.nativeElement.appendChild(this.renderer.domElement);
   }
 
   private checkCollision(a, b) {
