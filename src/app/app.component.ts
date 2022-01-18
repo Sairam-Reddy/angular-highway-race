@@ -418,7 +418,7 @@ export class AppComponent implements AfterViewInit {
     }
 
     this.renderer.render(this.scene, this.camera);
-    requestAnimationFrame(this.update);
+    requestAnimationFrame(this.update.bind(this));
   }
 
   private adjustWindow() {
