@@ -95,7 +95,7 @@ export class Vehicle {
     }
   }
 
-  move() {
+  move(game) {
     let mesh = this.model.mesh;
 
     // normal forward direction

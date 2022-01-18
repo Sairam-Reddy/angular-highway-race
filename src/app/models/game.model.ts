@@ -13,7 +13,7 @@ export class Game {
   public vehicleIDCtrld;
   public spark;
 
-  public constructor(args) {
+  public constructor(args, scene) {
     // 0: easy, 1: medium (default), 2: hard, 3: brutal
     let d = args.difficulty;
     this.difficulty = d >= 0 && d <= 3 ? d : 1;
@@ -24,15 +24,18 @@ export class Game {
     this.score = 0;
     this.noScoreXZone = 15;
     this.vehicles = [
-      new Vehicle({
-        color: 0xff1717,
-        x: 0,
-        z: 0,
-        modelID: 0,
-        speed: 1,
-        acceleration: 0.001 * 2 ** d,
-        name: 'Vehicle 0',
-      }),
+      new Vehicle(
+        {
+          color: 0xff1717,
+          x: 0,
+          z: 0,
+          modelID: 0,
+          speed: 1,
+          acceleration: 0.001 * 2 ** d,
+          name: 'Vehicle 0',
+        },
+        scene
+      ),
     ];
     this.vehicleSpawns = this.vehicles.length;
     this.vehicleLimit = 9;

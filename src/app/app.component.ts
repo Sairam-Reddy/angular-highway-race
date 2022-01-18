@@ -277,10 +277,13 @@ export class AppComponent implements AfterViewInit {
 
     // first time or starting anew
     if (this.game == null || this.game.over) {
-      this.game = new Game({
-        difficulty: difficulty,
-        tutorial: this.game == null,
-      });
+      this.game = new Game(
+        {
+          difficulty: difficulty,
+          tutorial: this.game == null,
+        },
+        this.scene
+      );
       this.header.innerHTML = this.game.score;
       this.toggleScoreCounter();
       this.showTutorial();
@@ -338,11 +341,14 @@ export class AppComponent implements AfterViewInit {
           while (spawnTries--) {
             if (Math.random() < 0.05 + this.game.difficulty * 0.025) {
               this.game.vehicles.push(
-                new Vehicle({
-                  x: (-1 + spawnTries) * 10,
-                  z: -this.renderDistance * firstChunkSize - spawnTries * 15,
-                  name: 'Vehicle ' + this.game.vehicleSpawns,
-                })
+                new Vehicle(
+                  {
+                    x: (-1 + spawnTries) * 10,
+                    z: -this.renderDistance * firstChunkSize - spawnTries * 15,
+                    name: 'Vehicle ' + this.game.vehicleSpawns,
+                  },
+                  this.scene
+                )
               );
               ++this.game.vehicleSpawns;
             }
