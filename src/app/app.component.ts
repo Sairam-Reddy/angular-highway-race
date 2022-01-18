@@ -91,7 +91,9 @@ export class AppComponent implements AfterViewInit {
 
   public onClickDifBtn(difficulty): void {
     this.toggleDifMenu();
-    this.startGame(difficulty);
+    setTimeout(() => {
+      this.startGame(difficulty);
+    }, 1600);
   }
 
   private init() {
