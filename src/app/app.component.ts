@@ -24,9 +24,9 @@ export class AppComponent implements AfterViewInit {
   private pointLight;
   private touch = { hold: false, x: 0 };
 
-  private difSelectActive = false;
-  private scoreCounterActive = false;
-  private replayBtnActive = false;
+  public difSelectActive = false;
+  public scoreCounterActive = false;
+  public replayBtnActive = false;
 
   private game = null;
   private skyColor = 0x69c6d0;
@@ -240,13 +240,13 @@ export class AppComponent implements AfterViewInit {
   private toggleScoreCounter() {
     this.scoreCounterActive = !this.scoreCounterActive;
 
-    let activeClass = 'score-active';
+    // let activeClass = 'score-active';
 
-    if (this.scoreCounterActive) {
-      this.header.classList.add(activeClass);
-    } else {
-      this.header.classList.remove(activeClass);
-    }
+    // if (this.scoreCounterActive) {
+    //   this.header.classList.add(activeClass);
+    // } else {
+    //   this.header.classList.remove(activeClass);
+    // }
   }
 
   private toggleReplayBtn() {
