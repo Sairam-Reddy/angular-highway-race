@@ -244,7 +244,7 @@ export class AppComponent implements AfterViewInit {
       setTimeout(this.toggleDifBtnStates.bind(this), 1500);
     } else {
       // this.difSelect.classList.remove(activeClass);
-      void this.difSelect.offsetWidth;
+      // void this.difSelect.offsetWidth;
       // this.difSelect.classList.add(inactiveClass);
       this.toggleDifBtnStates();
     }
