@@ -78,12 +78,15 @@ export class AppComponent implements AfterViewInit {
     }
 
     // replay button
-    this.replayButton.addEventListener('click', function () {
-      this.game.preparingNew = true;
-      this.toggleScoreCounter();
-      this.toggleReplayBtn();
-      setTimeout(this.toggleDifMenu.bind(this), 250);
-    });
+    this.replayButton.addEventListener(
+      'click',
+      (() => {
+        this.game.preparingNew = true;
+        this.toggleScoreCounter();
+        this.toggleReplayBtn();
+        setTimeout(this.toggleDifMenu.bind(this), 250);
+      }).bind(this)
+    );
   }
 
   private init() {
