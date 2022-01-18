@@ -63,19 +63,19 @@ export class AppComponent implements AfterViewInit {
     document.addEventListener(upEvent, this.straightenVehicle.bind(this));
 
     // difficulty buttons
-    for (let b of this.difButtons) {
-      b.addEventListener(
-        'click',
-        (() => {
-          this.toggleDifMenu();
+    // for (let b of this.difButtons) {
+    //   b.addEventListener(
+    //     'click',
+    //     (() => {
+    //       this.toggleDifMenu();
 
-          let t = b;
-          setTimeout(() => {
-            this.startGame(t.getAttribute('data-difficulty'));
-          }, 1600);
-        }).bind(this)
-      );
-    }
+    //       let t = b;
+    //       setTimeout(() => {
+    //         this.startGame(t.getAttribute('data-difficulty'));
+    //       }, 1600);
+    //     }).bind(this)
+    //   );
+    // }
 
     // replay button
     this.replayButton.addEventListener(
@@ -87,6 +87,11 @@ export class AppComponent implements AfterViewInit {
         setTimeout(this.toggleDifMenu.bind(this), 250);
       }).bind(this)
     );
+  }
+
+  public onClickDifBtn(difficulty): void {
+    this.toggleDifMenu();
+    this.startGame(difficulty);
   }
 
   private init() {
