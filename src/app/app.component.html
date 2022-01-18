@@ -1,7 +1,10 @@
 <header *ngIf="game" [class.score-active]="scoreCounterActive">
   {{ game.score }}
 </header>
-<div class="difficulty-select">
+<div
+  class="difficulty-select"
+  [ngClass]="difSelectActive ? 'menu-active' : 'menu-inactive'"
+>
   <h1>Select Difficulty</h1>
   <button type="button" (click)="onClickDifBtn(0)" disabled>Easy</button>
   <button type="button" (click)="onClickDifBtn(1)" disabled>Medium</button>

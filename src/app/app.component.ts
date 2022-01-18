@@ -230,18 +230,18 @@ export class AppComponent implements AfterViewInit {
   private toggleDifMenu() {
     this.difSelectActive = !this.difSelectActive;
 
-    let activeClass = 'menu-active',
-      inactiveClass = 'menu-inactive';
+    // let activeClass = 'menu-active',
+    //   inactiveClass = 'menu-inactive';
 
     if (this.difSelectActive) {
-      this.difSelect.classList.remove(inactiveClass);
-      void this.difSelect.offsetWidth;
-      this.difSelect.classList.add(activeClass);
+      // this.difSelect.classList.remove(inactiveClass);
+      // void this.difSelect.offsetWidth;
+      // this.difSelect.classList.add(activeClass);
       setTimeout(this.toggleDifBtnStates.bind(this), 1500);
     } else {
-      this.difSelect.classList.remove(activeClass);
-      void this.difSelect.offsetWidth;
-      this.difSelect.classList.add(inactiveClass);
+      // this.difSelect.classList.remove(activeClass);
+      // void this.difSelect.offsetWidth;
+      // this.difSelect.classList.add(inactiveClass);
       this.toggleDifBtnStates();
     }
   }
