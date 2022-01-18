@@ -11,15 +11,6 @@ import { Vehicle } from './models/vehicle.model';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements AfterViewInit, OnDestroy {
-  private difSelect;
-
-  private scene;
-  private camera;
-  private renderer;
-  private hemiLight;
-  private pointLight;
-  private touch = { hold: false, x: 0 };
-
   public difSelectActive = false;
   public scoreCounterActive = false;
   public replayBtnActive = false;
@@ -28,6 +19,13 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   public isReplayBtnDisabled = true;
   public game = null;
 
+  private difSelect;
+  private scene;
+  private camera;
+  private renderer;
+  private hemiLight;
+  private pointLight;
+  private touch = { hold: false, x: 0 };
   private skyColor = 0x69c6d0;
   private pointLightZ = -60;
   private cameraY = 45;
