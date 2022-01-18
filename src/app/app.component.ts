@@ -64,14 +64,17 @@ export class AppComponent implements AfterViewInit {
 
     // difficulty buttons
     for (let b of this.difButtons) {
-      b.addEventListener('click', function () {
-        this.toggleDifMenu();
+      b.addEventListener(
+        'click',
+        (() => {
+          this.toggleDifMenu();
 
-        let t = this;
-        setTimeout(() => {
-          this.startGame(t.getAttribute('data-difficulty').bind(this));
-        }, 1600);
-      });
+          let t = b;
+          setTimeout(() => {
+            this.startGame(t.getAttribute('data-difficulty'));
+          }, 1600);
+        }).bind(this)
+      );
     }
 
     // replay button
