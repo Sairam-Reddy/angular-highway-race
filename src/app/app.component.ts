@@ -12,7 +12,6 @@ import { Vehicle } from './models/vehicle.model';
 })
 export class AppComponent implements AfterViewInit {
   private difSelect;
-  private tutorialBox;
 
   private scene;
   private camera;
@@ -38,7 +37,6 @@ export class AppComponent implements AfterViewInit {
 
   public ngAfterViewInit(): void {
     this.difSelect = document.querySelector('.difficulty-select');
-    this.tutorialBox = document.querySelector('.tutorial');
 
     this.init();
     this.update();
@@ -236,14 +234,12 @@ export class AppComponent implements AfterViewInit {
 
   private showTutorial() {
     if (this.game.tutorial) {
-      this.tutorialBox.classList.add('tutorial-active');
     }
   }
 
   private hideTutorial() {
     if (this.game.tutorial) {
       this.game.tutorial = false;
-      this.tutorialBox.classList.remove('tutorial-active');
     }
   }
 
