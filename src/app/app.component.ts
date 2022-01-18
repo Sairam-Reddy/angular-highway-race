@@ -11,9 +11,6 @@ import { Vehicle } from './models/vehicle.model';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements AfterViewInit {
-  private header;
-  private difSelect;
-  private difButtons;
   private tutorialBox;
   private replayButton;
 
@@ -40,9 +37,6 @@ export class AppComponent implements AfterViewInit {
   private roadChunks = [];
 
   public ngAfterViewInit(): void {
-    // this.header = document.querySelector('header');
-    // this.difSelect = document.querySelector('.difficulty-select');
-    // this.difButtons = this.difSelect.querySelectorAll('button');
     this.tutorialBox = document.querySelector('.tutorial');
     this.replayButton = document.querySelector('.replay');
 
@@ -64,21 +58,6 @@ export class AppComponent implements AfterViewInit {
     document.addEventListener(downEvent, this.getTouchHold.bind(this));
     document.addEventListener(moveEvent, this.steerVehicle.bind(this));
     document.addEventListener(upEvent, this.straightenVehicle.bind(this));
-
-    // difficulty buttons
-    // for (let b of this.difButtons) {
-    //   b.addEventListener(
-    //     'click',
-    //     (() => {
-    //       this.toggleDifMenu();
-
-    //       let t = b;
-    //       setTimeout(() => {
-    //         this.startGame(t.getAttribute('data-difficulty'));
-    //       }, 1600);
-    //     }).bind(this)
-    //   );
-    // }
 
     // replay button
     this.replayButton.addEventListener(
