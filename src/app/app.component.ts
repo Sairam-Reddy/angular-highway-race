@@ -26,14 +26,18 @@ export class AppComponent implements AfterViewInit {
 
   public isDiffBtnDisabled = true;
   public isReplayBtnDisabled = true;
-
   public game = null;
+
   private skyColor = 0x69c6d0;
   private pointLightZ = -60;
   private cameraY = 45;
   private cameraYMin = 7;
   private renderDistance = 8;
   private roadChunks = [];
+
+  private downEvent;
+  private moveEvent;
+  private upEvent;
 
   public ngAfterViewInit(): void {
     this.difSelect = document.querySelector('.difficulty-select');
@@ -44,18 +48,26 @@ export class AppComponent implements AfterViewInit {
     window.addEventListener('resize', this.adjustWindow.bind(this));
 
     // steering
-    var downEvent =
-        'ontouchstart' in document.documentElement ? 'touchstart' : 'mousedown',
-      moveEvent =
-        'ontouchmove' in document.documentElement ? 'touchmove' : 'mousemove',
-      upEvent =
-        'ontouchend' in document.documentElement ? 'touchend' : 'mouseup';
+    this.downEvent =
+      'ontouchstart' in document.documentElement ? 'touchstart' : 'mousedown';
+    this.moveEvent =
+      'ontouchmove' in document.documentElement ? 'touchmove' : 'mousemove';
+    this.upEvent =
+      'ontouchend' in document.documentElement ? 'touchend' : 'mouseup';
 
     document.addEventListener('keydown', this.steerVehicle.bind(this));
     document.addEventListener('keyup', this.straightenVehicle.bind(this));
-    document.addEventListener(downEvent, this.getTouchHold.bind(this));
-    document.addEventListener(moveEvent, this.steerVehicle.bind(this));
-    document.addEventListener(upEvent, this.straightenVehicle.bind(this));
+    document.addEventListener(this.downEvent, this.getTouchHold.bind(this));
+    document.addEventListener(this.moveEvent, this.steerVehicle.bind(this));
+    document.addEventListener(this.upEvent, this.straightenVehicle.bind(this));
+  }
+
+  public ngOnDestroy(): void {
+    document.removeEventListener('keydown', this.steerVehicle);
+    document.removeEventListener('keyup', this.straightenVehicle);
+    document.removeEventListener(this.downEvent, this.getTouchHold);
+    document.removeEventListener(this.moveEvent, this.steerVehicle);
+    document.removeEventListener(this.upEvent, this.straightenVehicle);
   }
 
   public onClickDifBtn(difficulty): void {
@@ -198,9 +210,6 @@ export class AppComponent implements AfterViewInit {
   }
 
   private toggleDifBtnStates() {
-    // for (let b of this.difButtons) {
-    //   b.disabled = !b.disabled;
-    // }
     this.isDiffBtnDisabled = !this.isDiffBtnDisabled;
   }
 
@@ -442,9 +451,5 @@ export class AppComponent implements AfterViewInit {
   private getTouchHold(e) {
     this.touch.hold = true;
     this.touch.x = e.pageX;
-  }
-
-  private randomInt(min, max) {
-    return Math.round(Math.random() * (max - min)) + min;
   }
 }
