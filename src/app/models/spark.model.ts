@@ -19,7 +19,7 @@ export class Spark {
       }),
       particleMesh = new THREE.Mesh(particleGeo, particleMat);
 
-    for (var m = 0; m < randomInt(6, 8); ++m) {
+    for (var m = 0; m < this.randomInt(6, 8); ++m) {
       this.particles.push({
         x: 0,
         y: 0,
@@ -27,7 +27,7 @@ export class Spark {
         size: 1,
         speed: 0.2,
         decay: 0.04,
-        angle: randomInt(0, 359),
+        angle: this.randomInt(0, 359),
         mesh: particleMesh.clone(),
       });
       this.center.add(this.particles[m].mesh);
